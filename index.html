@@ -109,7 +109,21 @@
           </button>
         </form>
       </section>
-      <section class="panel records-panel"></section>
+      <section class="panel records-panel">
+        <div class="records-header">
+          <h2 class="panel-title">Sensor Logs</h2>
+          <div class="output-data">
+            <button class="btn btn-secondary" id="btn-purge">Purge</button>
+            <p class="total-count-label">
+              Total: <span class="total-count" id="total-count">0</span>
+            </p>
+          </div>
+        </div>
+        <div class="empty-state" id="empty-state">
+          <p>Nothing to see here.</p>
+        </div>
+        <ul id="records-list" class="records-grid" aria-live="polite"></ul>
+      </section>
     </main>
 
     <footer class="portal-footer">
