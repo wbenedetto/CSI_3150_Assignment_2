@@ -12,7 +12,103 @@
     </header>
 
     <main class="portal-container">
-      <section class="panel form-panel"></section>
+      <section class="panel form-panel">
+        <h2 class="panel-title">Sensor Data Input</h2>
+        <div id="form-error-banner" class="error-banner" role="alert"></div>
+        <form action="#" id="sensor-form" novalidate>
+          <div class="form-group">
+            <label for="title" class="form-label"
+              >Title <span class="required">*</span></label
+            >
+            <input
+              type="text"
+              class="form-input"
+              id="title"
+              name="title"
+              placeholder="Greenhouse A"
+              required
+            />
+            <p class="input-desc">Enter Title</p>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ph" class="form-label"
+                >pH <span class="required">*</span></label
+              >
+              <input
+                type="number"
+                class="form-input"
+                id="ph"
+                name="ph"
+                min="0"
+                max="14"
+                step="0.1"
+                placeholder="7.2"
+                required
+              />
+              <p class="input-desc">Enter pH (0-14)</p>
+            </div>
+            <div class="form-group">
+              <label for="temp" class="form-label"
+                >Temperature (F)<span class="required">*</span></label
+              >
+              <input
+                type="number"
+                class="form-input"
+                id="temp"
+                name="temp"
+                min="-100"
+                max="150"
+                step="0.1"
+                placeholder="71.3"
+                required
+              />
+              <p class="input-desc">Enter Temperature (F)</p>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ec" class="form-label"
+                >EC (mS/cm) <span class="required">*</span></label
+              >
+              <input
+                type="number"
+                class="form-input"
+                id="ec"
+                name="ec"
+                min="0"
+                max="20"
+                step="0.1"
+                placeholder="14.3"
+                required
+              />
+              <p class="input-desc">Enter EC Value From 0-20 (mS/cm)</p>
+            </div>
+            <div class="form-group">
+              <label for="rh" class="form-label"
+                >RH (%) <span class="required">*</span></label
+              >
+              <input
+                type="number"
+                class="form-input"
+                id="rh"
+                name="rh"
+                min="0"
+                max="100"
+                step="0.1"
+                placeholder="50.3"
+                required
+              />
+              <p class="input-desc">Enter Humidity (%)</p>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" id="btn-submit">
+            Submit Data
+          </button>
+        </form>
+      </section>
       <section class="panel records-panel"></section>
     </main>
 
