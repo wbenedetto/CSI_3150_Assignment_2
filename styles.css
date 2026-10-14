@@ -139,7 +139,6 @@ body {
 .portal-footer p {
   font-size: 0.85rem;
   color: var(--text-color-muted);
-  letter-spacing: 0.3px;
 }
 
 .btn {
@@ -173,6 +172,7 @@ body {
   width: 100%;
   background-color: var(--primary-color);
   color: var(--text-color-main);
+  margin-top: 2rem;
 }
 
 .btn-primary:hover {
@@ -186,4 +186,53 @@ body {
   justify-content: center;
   color: var(--text-color-muted);
   padding: 3rem 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+}
+
+.form-label {
+  font-size: 1rem;
+  color: var(--text-color-main);
+  font-weight: 400;
+  padding-left: 0.5rem;
+}
+
+.input-desc {
+  font-size: 0.75rem;
+  color: var(--text-color-muted);
+  padding-left: 0.5rem;
+}
+
+.required {
+  color: var(--hazard);
+  margin-left: 0.25rem;
+}
+
+.form-input {
+  background-color: var(--input-color);
+  color: var(--text-color-main);
+  border: 2px solid var(--primary-color);
+  padding: 0.75rem 0.85rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition:
+    border var(--transition-speed),
+    background-color var(--transition-speed);
+}
+
+.form-input:hover {
+  border: 2px solid var(--primary-color-hover);
+  background-color: #5c6d70;
 }
