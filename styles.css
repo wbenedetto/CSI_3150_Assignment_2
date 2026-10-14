@@ -17,7 +17,7 @@
   --font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-  --transition-speed: 0.2;
+  --transition-speed: 0.2s;
 }
 
 *,
@@ -35,4 +35,109 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.portal-header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 1.25rem 2rem;
+  background-color: var(--input-color);
+  border-bottom: 2px solid var(--primary-color);
+  font-size: 1rem;
+}
+
+.portal-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.icon-logo {
+  color: var(--primary-color);
+  padding-right: 0.25rem;
+}
+
+.portal-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 2rem;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.panel {
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: var(--bg-color-panel);
+}
+
+.panel-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-color-main);
+}
+
+.input-header,
+.records-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--input-color);
+  border-bottom: 2px solid var(--primary-color);
+  border-radius: 6px 6px 0 0;
+}
+
+.panel-content {
+  padding: 1.5rem;
+}
+
+.output-data {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.input-header,
+.records-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background-color: var(--input-color);
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.output-data {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.total-count-label {
+  font-size: 1.25rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--text-color-main);
+}
+
+.total-count {
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.portal-footer {
+  background-color: var(--input-color);
+  border-top: 1px solid var(--border-color);
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+.portal-footer p {
+  font-size: 0.85rem;
+  color: var(--text-color-muted);
+  letter-spacing: 0.3px;
 }
