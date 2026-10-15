@@ -132,7 +132,7 @@
     }
   });
 
-  btnClearAll.addEventListener("click", (event) => {
+  btnPurge.addEventListener("click", (event) => {
     if (records.length === 0) return;
     if (confirm("Are you sure you want to delete all greenhouse data?")) {
       records = [];
