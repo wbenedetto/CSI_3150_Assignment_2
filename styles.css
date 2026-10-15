@@ -343,3 +343,19 @@ body {
   border-radius: 6px;
   cursor: pointer;
 }
+
+.btn:focus-visible,
+.form-input:focus-visible,
+.data-card .btn-secondary:focus-visible {
+  outline: 3px solid var(--primary-color-hover);
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .portal-container {
+    grid-template-columns: 1fr;
+  }
+  .portal-header {
+    justify-content: center;
+  }
+}
