@@ -3,8 +3,8 @@
 
   const STORAGE_KEY = "greenview_records";
 
-  const sensorForm = dovcument.getElementById("sensor-form");
-  const errorBanner = document.getElementById("error-banner");
+  const sensorForm = document.getElementById("sensor-form");
+  const errorBanner = document.getElementById("form-error-banner");
   const recordsList = document.getElementById("records-list");
   const totalCount = document.getElementById("total-count");
   const emptyState = document.getElementById("empty-state");
@@ -176,5 +176,22 @@
 
     recordsList.innerHTML = "";
     recordsList.appendChild(fragment);
+  }
+
+  function displayError(message) {
+    errorBanner.textContent = message;
+    errorBanner.classList.remove("hidden");
+  }
+
+  function hideError() {
+    errorBanner.textContent = "";
+    errorBanner.classList.add("hidden");
+  }
+
+  function escapeHtml(str) {
+    return str
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
   }
 })();
