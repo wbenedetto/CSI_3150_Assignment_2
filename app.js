@@ -140,4 +140,41 @@
       render();
     }
   });
+
+  function render() {
+    totalCount.textContent = records.length;
+
+    if (records.length === 0) {
+      emptyState.classList.remove("hidden");
+      recordsList.innerHTML = "";
+      return;
+    }
+
+    emptyState.classList.add("hidden");
+    const fragment = document.createDocumentFragment();
+
+    records.forEach(function (rec) {
+      const li = document.createElement("li");
+      li.className = "data-card status-" + rec.risk.level;
+
+      li.innerHTML = `<div class="card-header">
+            <div>
+                <div class="data-title">${escapeHtml(rec.title)} </div>
+                <span class="risk-badge ${rec.risk.level}">${rec.risk.label}</span>            
+            </div>
+            <div class="data-fields">
+              <div class="data-item"><span>pH</span>${rec.ph.toFixed(1)}</div>
+              <div class="data-item"><span>Temperature</span>${rec.temp.toFixed(1)} F</div>
+              <div class="data-item"><span>Electrical Conductivity (mS/cm)</span>${rec.ec.toFixed(1)} mS/cm</div>
+              <div class="data-item"><span>Relative Humidity (%)</span>${rec.rh.toFixed(1)}%</div> 
+            </div>
+            <button class="btn-secondary" data-id="${rec.id}">Remove Record</button>        
+        </div>`;
+
+      fragment.appendChild(li);
+    });
+
+    recordsList.innerHTML = "";
+    recordsList.appendChild(fragment);
+  }
 })();
