@@ -84,4 +84,60 @@
 
     return errors;
   }
+
+  sensorForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const formData = {
+      id: crypto.randomUUID(),
+      title: inputTitle.value,
+      ph: parseFloat(inputPh.value),
+      temp: parseFloat(inputTemp.value),
+      ec: parseFloat(inputEc.value),
+      rh: parseFloat(inputRh.value),
+    };
+
+    const validationErrors = validateInput(formData);
+
+    if (validationErrors.length > 0) {
+      displayError(validationErrors.join(" "));
+      return;
+    }
+
+    hideError();
+
+    formData.risk = evaluateRisk(
+      formData.ph,
+      formData.temp,
+      formData.ec,
+      formData.rh,
+    );
+
+    records.unshift(formData);
+    saveRecords();
+    render();
+    sensorForm.reset();
+    inputTitle.focus();
+  });
+
+  recordsList.addEventListener("click", (event) => {
+    const target = event.target;
+    if (target.classList.contains("btn-secondary")) {
+      const recordId = target.dataset.id;
+      records = records.filter(function (record) {
+        return record.id !== recordId;
+      });
+      saveRecords();
+      render();
+    }
+  });
+
+  btnClearAll.addEventListener("click", (event) => {
+    if (records.length === 0) return;
+    if (confirm("Are you sure you want to delete all greenhouse data?")) {
+      records = [];
+      saveRecords();
+      render();
+    }
+  });
 })();
