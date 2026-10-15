@@ -79,7 +79,7 @@
       );
     }
     if (isNaN(data.rh) || data.rh < 0 || data.rh > 100) {
-      errors.push("Relative humidity must be a number and between 0 to 100 %");
+      errors.push("Relative humidity must be a number and between 0 to 100%");
     }
 
     return errors;
@@ -157,8 +157,8 @@
       const li = document.createElement("li");
       li.className = "data-card status-" + rec.risk.level;
 
-      li.innerHTML = `<div class="card-header">
-            <div>
+      li.innerHTML = `<div class="card-body">
+            <div class="card-header">
                 <div class="data-title">${escapeHtml(rec.title)} </div>
                 <span class="risk-badge ${rec.risk.level}">${rec.risk.label}</span>            
             </div>
