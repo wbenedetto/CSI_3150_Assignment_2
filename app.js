@@ -64,26 +64,85 @@
   function validateInput(data) {
     const errors = [];
 
+    inputTitle.classList.remove("invalid");
+    inputPh.classList.remove("invalid");
+    inputTemp.classList.remove("invalid");
+    inputEc.classList.remove("invalid");
+    inputRh.classList.remove("invalid");
+
     if (!data.title.trim()) {
       errors.push("Input title is a required field");
+      inputTitle.classList.add("invalid");
     }
     if (isNaN(data.ph) || data.ph < 0 || data.ph > 14) {
       errors.push("pH must be a number and between 0 to 14");
+      inputPh.classList.add("invalid");
     }
     if (isNaN(data.temp) || data.temp < -100 || data.temp > 150) {
       errors.push("Temperature must be a number and between -100 to 150 F");
+      inputTemp.classList.add("invalid");
     }
     if (isNaN(data.ec) || data.ec < 0 || data.ec > 20) {
       errors.push(
         "Electrical conductivity must be a number and between 0 to 20 mS/cm",
       );
+      inputEc.classList.add("invalid");
     }
     if (isNaN(data.rh) || data.rh < 0 || data.rh > 100) {
       errors.push("Relative humidity must be a number and between 0 to 100%");
+      inputRh.classList.add("invalid");
     }
 
     return errors;
   }
+
+  sensorForm.addEventListener("input", (event) => {
+    const input = event.target;
+    const value = parseFloat(input.value);
+    const errors = [];
+
+    input.classList.remove("invalid");
+
+    if (input === inputTitle && !input.value.trim()) {
+      inputTitle.classList.add("invalid");
+    }
+    if (input === inputPh && (isNaN(value) || value < 0 || value > 14)) {
+      inputPh.classList.add("invalid");
+    }
+    if (input === inputTemp && (isNaN(value) || value < -100 || value > 150)) {
+      inputTemp.classList.add("invalid");
+    }
+    if (input === inputEc && (isNaN(value) || value < 0 || value > 20)) {
+      inputEc.classList.add("invalid");
+    }
+    if (input === inputRh && (isNaN(value) || value < 0 || value > 100)) {
+      inputRh.classList.add("invalid");
+    }
+
+    if (inputTitle.classList.contains("invalid")) {
+      errors.push("Input title is a required field");
+    }
+    if (inputPh.classList.contains("invalid")) {
+      errors.push("pH must be a number and between 0 to 14");
+    }
+    if (inputTemp.classList.contains("invalid")) {
+      errors.push("Temperature must be a number and between -100 to 150 F");
+    }
+    if (inputEc.classList.contains("invalid")) {
+      errors.push(
+        "Electrical conductivity must be a number and between 0 to 20 mS/cm",
+      );
+    }
+    if (inputRh.classList.contains("invalid")) {
+      errors.push("Relative humidity must be a number and between 0 to 100%");
+    }
+
+    if (errors.length > 0) {
+      displayError(errors.join(". "));
+    } else {
+      hideError();
+    }
+  });
 
   sensorForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -100,7 +159,7 @@
     const validationErrors = validateInput(formData);
 
     if (validationErrors.length > 0) {
-      displayError(validationErrors.join(" "));
+      displayError(validationErrors.join(". "));
       return;
     }
 
@@ -160,15 +219,15 @@
       li.innerHTML = `<div class="card-body">
             <div class="card-header">
                 <div class="data-title">${escapeHtml(rec.title)} </div>
-                <span class="risk-badge ${rec.risk.level}">${rec.risk.label}</span>            
+                <span class="risk-badge ${rec.risk.level}">${rec.risk.label}</span>
             </div>
             <div class="data-fields">
               <div class="data-item"><span>pH</span>${rec.ph.toFixed(1)}</div>
               <div class="data-item"><span>Temperature</span>${rec.temp.toFixed(1)} F</div>
               <div class="data-item"><span>Electrical Conductivity (mS/cm)</span>${rec.ec.toFixed(1)} mS/cm</div>
-              <div class="data-item"><span>Relative Humidity (%)</span>${rec.rh.toFixed(1)}%</div> 
+              <div class="data-item"><span>Relative Humidity (%)</span>${rec.rh.toFixed(1)}%</div>
             </div>
-            <button class="btn-secondary" data-id="${rec.id}">Remove Record</button>        
+            <button class="btn-secondary" data-id="${rec.id}">Remove Record</button>
         </div>`;
 
       fragment.appendChild(li);
